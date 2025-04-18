@@ -5,7 +5,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gabriel & Isabella</title>
   <style>
-    /* Mantenha todos os estilos que você já tem */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8f2;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #e4c1f9;
+      text-align: center;
+      padding: 2.5rem 1rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+    }
+    header p {
+      font-size: 1.2rem;
+    }
+    section {
+      padding: 2rem;
+      max-width: 600px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    section h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      color: #5e239d;
+      text-align: center;
+    }
+    .countdown {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    form input,
+    form button,
+    form select {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    form button {
+      background-color: #e4c1f9;
+      color: #333;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 1rem;
+    }
+    form button:hover {
+      background-color: #d3a7eb;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      margin: 3rem auto 1rem;
+      color: #999;
+    }
   </style>
 </head>
 <body>
@@ -59,28 +136,33 @@
       countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }, 1000);
 
-    // Envio via Fetch e redirecionamento
+    // Envio do formulário corrigido
     document.getElementById('rsvp-form').addEventListener('submit', function(e) {
       e.preventDefault();
+      
+      // Coletar dados do formulário
       const formData = new FormData(this);
       
-      // Verificar se a opção de presença foi selecionada corretamente
-      const confirmacao = document.getElementById('confirmacao');
-      if (confirmacao.value === 'PRESENTE' || confirmacao.value === 'AUSENTE') {
-        // Se a opção foi escolhida corretamente, envia o valor
-      } else {
-        // Para compatibilidade com versões antigas, se necessário
-        formData.set('presenca', confirmacao.value === 'sim' ? 'PRESENTE' : 'AUSENTE');
-      }
-      
-      // Enviar para o Google Apps Script
-      fetch('https://script.google.com/macros/s/AKfycbwo_4Xr91HXcnheTkeF2EamQwdGQgIunp8bSdZPU8bBj7kRRLfPx9gMIlKq5rLhvD0cKg/exec', {
+      // Configurar requisição
+      fetch('https://script.google.com/macros/s/SUA_URL_DO_SCRIPT/exec', {
         method: 'POST',
         body: formData
       })
-      .then(response => response.text())
-      .then(() => {
-        window.location.href = 'thankyou.html'; // Redireciona para a página de agradecimento
+      .then(response => {
+        if (!response.ok) throw new Error('Erro na comunicação');
+        return response.json();
+      })
+      .then(data => {
+        if(data.status === "success") {
+          window.location.href = 'thankyou.html';
+        } else {
+          throw new Error(data.message);
+        }
       })
       .catch(err => {
-        
+        alert('Erro: ' + err.message);
+      });
+    });
+  </script>
+</body>
+</html>
