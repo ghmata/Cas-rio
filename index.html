@@ -5,92 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gabriel & Isabella</title>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #fff8f2;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #e4c1f9;
-      text-align: center;
-      padding: 2.5rem 1rem;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 3rem;
-    }
-    header p {
-      font-size: 1.2rem;
-    }
-    section {
-      padding: 2rem;
-      max-width: 600px;
-      margin: 2rem auto;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    section h2 {
-      margin-bottom: 1.5rem;
-      font-size: 1.8rem;
-      color: #5e239d;
-      text-align: center;
-    }
-    .countdown {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-top: 1rem;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-    .form-group {
-      margin-bottom: 1rem;
-    }
-    form label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-    }
-    form input,
-    form button,
-    form select {
-      width: 100%;
-      padding: 0.8rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-    form button {
-      background-color: #e4c1f9;
-      color: #333;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      margin-top: 1rem;
-    }
-    form button:hover {
-      background-color: #d3a7eb;
-    }
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      margin: 3rem auto 1rem;
-      color: #999;
-    }
+    /* ... (mantenha todos os estilos existentes) ... */
   </style>
 </head>
 <body>
-  <header>
-    <h1>Gabriel & Isabella</h1>
-    <p>28 de Junho de 2025, às 19h | Buffet Aerokids</p>
-    <div class="countdown" id="countdown"></div>
-  </header>
+  <!-- ... (mantenha todo o HTML existente até o formulário) ... -->
 
   <section>
     <h2>Confirme sua Presença</h2>
@@ -109,8 +28,8 @@
         <label for="confirmacao">Confirmação de presença</label>
         <select name="presenca" id="confirmacao" required>
           <option value="" disabled selected>Selecione...</option>
-          <option value="sim">Irei comparecer</option>
-          <option value="nao">Não irei comparecer</option>
+          <option value="PRESENTE">Irei comparecer</option>
+          <option value="AUSENTE">Não irei comparecer</option>
         </select>
       </div>
 
@@ -118,9 +37,7 @@
     </form>
   </section>
 
-  <footer>
-    Feito com amor por Gabriel & Isabella - 2025
-  </footer>
+  <!-- ... (mantenha o restante do HTML existente) ... -->
 
   <script>
     // Contagem regressiva
@@ -140,6 +57,16 @@
     document.getElementById('rsvp-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const formData = new FormData(this);
+      
+      // Modificação: Verificar o valor selecionado e ajustar se necessário
+      const confirmacao = document.getElementById('confirmacao');
+      if (confirmacao.value === 'PRESENTE' || confirmacao.value === 'AUSENTE') {
+        // Já está no formato correto
+      } else {
+        // Para compatibilidade com versões antigas (se necessário)
+        formData.set('presenca', confirmacao.value === 'sim' ? 'PRESENTE' : 'AUSENTE');
+      }
+      
       fetch('https://script.google.com/macros/s/AKfycbwk7D8esadnChXAx1En5TE4GhxvOypegYbMqd-8RIuwa4iB7P7RJ9ZoVGMNREvRYWnRhw/exec', {
         method: 'POST',
         body: formData
