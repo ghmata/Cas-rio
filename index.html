@@ -139,11 +139,15 @@
     // Envio do formulário corrigido
     document.getElementById('rsvp-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      
+
       // Coletar dados do formulário
       const formData = new FormData(this);
-      
-      // Configurar requisição
+
+      // Adicionar presença
+      const presenca = document.getElementById('confirmacao').value;
+      formData.append('presenca', presenca); // Garantir que o valor de "presenca" seja enviado corretamente
+
+      // Enviar os dados para o Google Apps Script
       fetch('https://script.google.com/macros/s/AKfycbyhtGBrJO99mmOAljn9DtW76--bro1okG83MDcm-vNLKu9nn_ADRmBbtACIpPhXVBPvDQ/exec', {
         method: 'POST',
         body: formData
@@ -153,14 +157,14 @@
         return response.json();
       })
       .then(data => {
-        if(data.status === "success") {
-          window.location.href = 'thankyou.html';
+        if (data.status === "success") {
+          window.location.href = 'thankyou.html'; // Redireciona para página de agradecimento
         } else {
           throw new Error(data.message);
         }
       })
       .catch(err => {
-        alert('Erro: ' + err.message);
+        alert('Erro: ' + err.message); // Exibe erro, caso aconteça
       });
     });
   </script>
