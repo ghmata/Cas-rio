@@ -43,6 +43,14 @@
       font-weight: bold;
       margin-top: 1rem;
     }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    form label {
+      margin-bottom: 0.3rem;
+      font-weight: bold;
+    }
     form input,
     form button,
     form select {
@@ -83,14 +91,19 @@
   <section>
     <h2>Confirme sua Presença</h2>
     <form id="rsvp-form">
-      <input type="text" name="nome" placeholder="Seu nome" required />
-      <input type="email" name="email" placeholder="Seu e-mail" required />
+      <label for="nome">Nome</label>
+      <input type="text" name="nome" id="nome" placeholder="Seu nome" required />
+
+      <label for="email">E-mail</label>
+      <input type="email" name="email" id="email" placeholder="Seu e-mail" required />
+
       <label for="confirmacao">Confirmação de presença</label>
       <select name="presenca" id="confirmacao" required>
         <option value="" disabled selected>Selecione...</option>
         <option value="sim">Irei comparecer</option>
         <option value="nao">Não irei comparecer</option>
       </select>
+
       <button type="submit">Confirmar presença</button>
     </form>
   </section>
@@ -130,41 +143,5 @@
       });
     });
   </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agradecimento</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #fff8f2;
-      color: #333;
-    }
-    .message {
-      text-align: center;
-      padding: 2rem;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    .message h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-  </style>
-</head>
-<body>
-  <div class="message">
-    <h1>Agradecemos por tudo! Você é importante para nós!</h1>
-  </div>
 </body>
 </html>
