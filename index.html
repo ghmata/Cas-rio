@@ -1,3 +1,4 @@
+// index.html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,54 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gabriel & Isabella</title>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #fff8f2;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #e4c1f9;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      font-size: 1.2rem;
-    }
-    section {
-      padding: 2rem;
-      max-width: 700px;
-      margin: auto;
-    }
-    .countdown {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-top: 1rem;
-    }
-    form input, form button {
-      display: block;
-      width: 100%;
-      margin-bottom: 1rem;
-      padding: 0.8rem;
-      font-size: 1rem;
-    }
-    .present-list li {
-      background: #f9f3f3;
-      margin: 0.5rem 0;
-      padding: 0.5rem;
-      border-radius: 8px;
-    }
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      margin: 2rem auto;
-      color: #999;
-    }
+    body { font-family: 'Segoe UI', sans-serif; background: #fff8f2; color: #333; margin: 0; padding: 0; }
+    header { background: #e4c1f9; text-align: center; padding: 2rem 1rem; }
+    header h1 { margin: 0; font-size: 2.5rem; }
+    header p { font-size: 1.2rem; }
+    section { padding: 2rem; max-width: 700px; margin: auto; }
+    .countdown { font-size: 1.5rem; font-weight: bold; margin-top: 1rem; }
+    form input, form button, form select { display: block; width: 100%; margin-bottom: 1rem; padding: 0.8rem; font-size: 1rem; }
+    footer { text-align: center; font-size: 0.9rem; margin: 2rem auto; color: #999; }
   </style>
 </head>
 <body>
@@ -64,23 +25,17 @@
 
   <section>
     <h2>Confirme sua Presença</h2>
-    <form action="https://script.google.com/macros/s/AKfycbxrUA_6ZmX2MinTQGQbbUaXj0jW0wp64Ob0A2kJgKEJFb-SwLwcFrgwRMlIZcua1yIlig/exec" method="POST">
+    <form id="rsvp-form">
       <input type="text" name="nome" placeholder="Seu nome" required />
       <input type="email" name="email" placeholder="Seu e-mail" required />
+      <label for="confirmacao">Confirmação de presença</label>
+      <select name="confirmacao" id="confirmacao" required>
+        <option value="" disabled selected>Selecione...</option>
+        <option value="Irei comparecer">Irei comparecer</option>
+        <option value="Não irei comparecer">Não irei comparecer</option>
+      </select>
       <button type="submit">Confirmar presença</button>
     </form>
-  </section>
-
-  <section>
-    <h2>Lista de Presentes</h2>
-    <p>Você pode nos presentear via Pix: <strong>gabrielhm00@gmail.com</strong></p>
-    <ul class="present-list">
-      <li>Calcinha bege</li>
-      <li>Cueca de Elefante</li>
-      <li>Cobertor de Razão pro Noivo</li>
-      <li>Tampão de ouvido</li>
-      <li>Copo</li>
-    </ul>
   </section>
 
   <footer>
@@ -88,21 +43,55 @@
   </footer>
 
   <script>
+    // Contagem regressiva
     const targetDate = new Date("2025-06-28T19:00:00").getTime();
     const countdown = document.getElementById("countdown");
-
     setInterval(() => {
       const now = new Date().getTime();
       const distance = targetDate - now;
-
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
       countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }, 1000);
+
+    // Envio via Fetch e redirecionamento
+    document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      fetch('https://script.google.com/macros/s/AKfycbxrUA_6ZmX2MinTQGQbbUaXj0jW0wp64Ob0A2kJgKEJFb-SwLwcFrgwRMlIZcua1yIlig/exec', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(() => {
+        window.location.href = 'thankyou.html';
+      })
+      .catch(err => {
+        alert('Erro ao enviar: ' + err);
+      });
+    });
   </script>
 </body>
 </html>
-primeiro commit
+
+// thankyou.html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agradecimento</title>
+  <style>
+    body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: 'Segoe UI', sans-serif; background: #fff8f2; color: #333; }
+    .message { text-align: center; }
+    .message h1 { font-size: 2rem; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="message">
+    <h1>Agradecemos por tudo! Você é importante para nós!</h1>
+  </div>
+</body>
+</html>
