@@ -5,11 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gabriel & Isabella</title>
   <style>
-    /* ... (mantenha todos os estilos existentes) ... */
+    /* Mantenha todos os estilos que você já tem */
   </style>
 </head>
 <body>
-  <!-- ... (mantenha todo o HTML existente até o formulário) ... -->
+  <header>
+    <h1>Gabriel & Isabella</h1>
+    <p>28 de Junho de 2025, às 19h | Buffet Aerokids</p>
+    <div class="countdown" id="countdown"></div>
+  </header>
 
   <section>
     <h2>Confirme sua Presença</h2>
@@ -37,7 +41,9 @@
     </form>
   </section>
 
-  <!-- ... (mantenha o restante do HTML existente) ... -->
+  <footer>
+    Feito com amor por Gabriel & Isabella - 2025
+  </footer>
 
   <script>
     // Contagem regressiva
@@ -58,27 +64,23 @@
       e.preventDefault();
       const formData = new FormData(this);
       
-      // Modificação: Verificar o valor selecionado e ajustar se necessário
+      // Verificar se a opção de presença foi selecionada corretamente
       const confirmacao = document.getElementById('confirmacao');
       if (confirmacao.value === 'PRESENTE' || confirmacao.value === 'AUSENTE') {
-        // Já está no formato correto
+        // Se a opção foi escolhida corretamente, envia o valor
       } else {
-        // Para compatibilidade com versões antigas (se necessário)
+        // Para compatibilidade com versões antigas, se necessário
         formData.set('presenca', confirmacao.value === 'sim' ? 'PRESENTE' : 'AUSENTE');
       }
       
+      // Enviar para o Google Apps Script
       fetch('https://script.google.com/macros/s/AKfycbwo_4Xr91HXcnheTkeF2EamQwdGQgIunp8bSdZPU8bBj7kRRLfPx9gMIlKq5rLhvD0cKg/exec', {
         method: 'POST',
         body: formData
       })
       .then(response => response.text())
       .then(() => {
-        window.location.href = 'thankyou.html';
+        window.location.href = 'thankyou.html'; // Redireciona para a página de agradecimento
       })
       .catch(err => {
-        alert('Erro ao enviar: ' + err);
-      });
-    });
-  </script>
-</body>
-</html>
+        
