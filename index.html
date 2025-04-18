@@ -109,8 +109,8 @@
         <label for="confirmacao">Confirmação de presença</label>
         <select name="presenca" id="confirmacao" required>
           <option value="" disabled selected>Selecione...</option>
-          <option value="PRESENTE">Irei comparecer</option>
-          <option value="AUSENTE">Não irei comparecer</option>
+          <option value="Irei comparecer">Irei comparecer</option>
+          <option value="Não irei comparecer">Não irei comparecer</option>
         </select>
       </div>
 
@@ -142,10 +142,6 @@
 
       // Coletar dados do formulário
       const formData = new FormData(this);
-
-      // Adicionar presença
-      const presenca = document.getElementById('confirmacao').value;
-      formData.append('presenca', presenca); // Garantir que o valor de "presenca" seja enviado corretamente
 
       // Enviar os dados para o Google Apps Script
       fetch('https://script.google.com/macros/s/AKfycbxcaLlWkj7pJzAodHZn2UY9D-ha9eyrvcTANWO9tauKxXCN7gDGo0VSVVtYojrVMGairA/exec', {
