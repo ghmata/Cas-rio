@@ -47,20 +47,23 @@
       display: flex;
       flex-direction: column;
     }
+    .form-group {
+      margin-bottom: 1rem;
+    }
     form label {
-      margin-bottom: 0.3rem;
+      display: block;
+      margin-bottom: 0.5rem;
       font-weight: bold;
     }
     form input,
     form button,
     form select {
-      display: block;
       width: 100%;
-      margin-bottom: 1rem;
       padding: 0.8rem;
       font-size: 1rem;
       border-radius: 8px;
       border: 1px solid #ccc;
+      box-sizing: border-box;
     }
     form button {
       background-color: #e4c1f9;
@@ -69,6 +72,7 @@
       border: none;
       cursor: pointer;
       transition: background-color 0.3s;
+      margin-top: 1rem;
     }
     form button:hover {
       background-color: #d3a7eb;
@@ -91,18 +95,24 @@
   <section>
     <h2>Confirme sua Presença</h2>
     <form id="rsvp-form">
-      <label for="nome">Nome</label>
-      <input type="text" name="nome" id="nome" placeholder="Seu nome" required />
-
-      <label for="email">E-mail</label>
-      <input type="email" name="email" id="email" placeholder="Seu e-mail" required />
-
-      <label for="confirmacao">Confirmação de presença</label>
-      <select name="presenca" id="confirmacao" required>
-        <option value="" disabled selected>Selecione...</option>
-        <option value="sim">Irei comparecer</option>
-        <option value="nao">Não irei comparecer</option>
-      </select>
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome" placeholder="Seu nome" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email" placeholder="Seu e-mail" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="confirmacao">Confirmação de presença</label>
+        <select name="presenca" id="confirmacao" required>
+          <option value="" disabled selected>Selecione...</option>
+          <option value="sim">Irei comparecer</option>
+          <option value="nao">Não irei comparecer</option>
+        </select>
+      </div>
 
       <button type="submit">Confirmar presença</button>
     </form>
