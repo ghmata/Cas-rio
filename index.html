@@ -6,14 +6,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gabriel & Isabella</title>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; background: #fff8f2; color: #333; margin: 0; padding: 0; }
-    header { background: #e4c1f9; text-align: center; padding: 2rem 1rem; }
-    header h1 { margin: 0; font-size: 2.5rem; }
-    header p { font-size: 1.2rem; }
-    section { padding: 2rem; max-width: 700px; margin: auto; }
-    .countdown { font-size: 1.5rem; font-weight: bold; margin-top: 1rem; }
-    form input, form button, form select { display: block; width: 100%; margin-bottom: 1rem; padding: 0.8rem; font-size: 1rem; }
-    footer { text-align: center; font-size: 0.9rem; margin: 2rem auto; color: #999; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8f2;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #e4c1f9;
+      text-align: center;
+      padding: 2.5rem 1rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+    }
+    header p {
+      font-size: 1.2rem;
+    }
+    section {
+      padding: 2rem;
+      max-width: 600px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    section h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      color: #5e239d;
+      text-align: center;
+    }
+    .countdown {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    form input,
+    form button,
+    form select {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background-color: #e4c1f9;
+      color: #333;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    form button:hover {
+      background-color: #d3a7eb;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      margin: 3rem auto 1rem;
+      color: #999;
+    }
   </style>
 </head>
 <body>
@@ -29,10 +87,10 @@
       <input type="text" name="nome" placeholder="Seu nome" required />
       <input type="email" name="email" placeholder="Seu e-mail" required />
       <label for="confirmacao">Confirmação de presença</label>
-      <select name="confirmacao" id="confirmacao" required>
+      <select name="presenca" id="confirmacao" required>
         <option value="" disabled selected>Selecione...</option>
-        <option value="Irei comparecer">Irei comparecer</option>
-        <option value="Não irei comparecer">Não irei comparecer</option>
+        <option value="sim">Irei comparecer</option>
+        <option value="nao">Não irei comparecer</option>
       </select>
       <button type="submit">Confirmar presença</button>
     </form>
@@ -84,9 +142,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agradecimento</title>
   <style>
-    body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: 'Segoe UI', sans-serif; background: #fff8f2; color: #333; }
-    .message { text-align: center; }
-    .message h1 { font-size: 2rem; margin-bottom: 1rem; }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8f2;
+      color: #333;
+    }
+    .message {
+      text-align: center;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .message h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 <body>
