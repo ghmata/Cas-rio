@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabriel & Isabella</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8f2;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #e4c1f9;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+    }
+    section {
+      padding: 2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+    .countdown {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    form input, form button {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.8rem;
+      font-size: 1rem;
+    }
+    .present-list li {
+      background: #f9f3f3;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      margin: 2rem auto;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gabriel & Isabella</h1>
+    <p>28 de Junho de 2025, às 19h | Buffet Aerokids</p>
+    <div class="countdown" id="countdown"></div>
+  </header>
+
+  <section>
+    <h2>Confirme sua Presença</h2>
+    <form name="rsvp" method="POST" data-netlify="true">
+      <input type="text" name="nome" placeholder="Seu nome" required />
+      <input type="email" name="email" placeholder="Seu e-mail" required />
+      <button type="submit">Confirmar presença</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Lista de Presentes</h2>
+    <p>Você pode nos presentear via Pix: <strong>gabrielhm00@gmail.com</strong></p>
+    <ul class="present-list">
+      <li>Calcinha bege</li>
+      <li>Cueca de Elefante</li>
+      <li>Cobertor de Razão pro Noivo</li>
+      <li>Tampão de ouvido</li>
+      <li>Copo</li>
+    </ul>
+  </section>
+
+  <footer>
+    Feito com amor por Gabriel & Isabella - 2025
+  </footer>
+
+  <script>
+    const targetDate = new Date("2025-06-28T19:00:00").getTime();
+    const countdown = document.getElementById("countdown");
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
+  </script>
+</body>
+</html>
+primeiro commit
