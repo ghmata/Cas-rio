@@ -106,8 +106,13 @@
       </div>
       
       <div class="form-group">
-        <label for="acompanhantes">Acompanhantes</label>
-        <input type="number" name="acompanhantes" id="acompanhantes" placeholder="Número de acompanhantes (sem incluir você)" min="0" required />
+        <label for="acompanhantes-adultos">Acompanhantes - Adultos (Sem incluir você)</label>
+        <input type="number" name="acompanhantes-adultos" id="acompanhantes-adultos" placeholder="Número de acompanhantes adultos" min="0" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="acompanhantes-criancas">Acompanhantes - Crianças (Até 6 anos de idade)</label>
+        <input type="number" name="acompanhantes-criancas" id="acompanhantes-criancas" placeholder="Número de crianças (até 6 anos)" min="0" required />
       </div>
       
       <div class="form-group">
@@ -149,7 +154,7 @@
       const formData = new FormData(this);
 
       // Enviar os dados para o Google Apps Script
-      fetch('https://script.google.com/macros/s/AKfycbw_YqZJaKn3BItIOQ6PT-Y2RbZ4ldv_d30Q16uh0gXD385FajLfKZeueKucft3lCO_j/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbwjG70EFZQmT9rmsx2BmhFPuzlQZl6K80dqyWNyjDmGf6TZuY5NXWv2nf5TXD9dJz2Ggg/exec', {
         method: 'POST',
         body: formData
       })
