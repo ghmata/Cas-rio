@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Obrigado!</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8f2;
+      color: #333;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      color: #5e239d;
+    }
+  </style>
+</head>
+<body>
+  <h1>Obrigado pela Confirmação!</h1>
+  <p>Estamos ansiosos para celebrar com você!</p>
+  <p>Até breve!</p>
+</body>
+</html>
