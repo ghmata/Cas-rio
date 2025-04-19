@@ -111,7 +111,7 @@
       </div>
       
       <div class="form-group">
-        <label for="acompanhantes-criancas">Acompanhantes - Crianças (Até 6 anos de idade)</label>
+        <label for="acompanhantes-criancas">Acompanhantes - Crianças (Até 10 anos de idade)</label>
         <input type="number" name="acompanhantes-criancas" id="acompanhantes-criancas" placeholder="Número de crianças (até 6 anos)" min="0" required />
       </div>
       
@@ -154,7 +154,7 @@
       const formData = new FormData(this);
 
       // Enviar os dados para o Google Apps Script
-      fetch('https://script.google.com/macros/s/AKfycbzDZPZ6crb7ZeK5NhAiHFRBmJArtClauaakfkpwKFSMZZyRbCNuyBibAkGbeHfoPlQUig/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbw2d3q9Gr4pz58174BalA0t3SemJo1uES-ALdwetf0RBKDVIIW4rWcrH9MK4S1qnpLnDw/exec', {
         method: 'POST',
         body: formData
       })
