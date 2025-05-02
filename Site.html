@@ -151,26 +151,32 @@
       e.preventDefault();
 
       // Coletar dados do formulário
-      const formData = new FormData(this);
+      const formData = {
+        nome: document.getElementById('nome').value,
+        telefone: document.getElementById('telefone').value,
+        "Acp - Adulto": document.getElementById('acompanhantes-adultos').value, // Ajuste do nome da coluna
+        "Acp - Criança": document.getElementById('acompanhantes-criancas').value, // Ajuste do nome da coluna
+        presenca: document.getElementById('confirmacao').value
+      };
 
-      // Enviar os dados para o Google Apps Script
-      fetch('https://script.google.com/macros/s/AKfycbyBg8Bgd0aEG-NWyFttZLuU0c1GbOhe5gj6_JbVYAwKRAR9Zs4oitGKxjKmPMihvmKgsQ/exec', {
+      // Enviar os dados para o servidor Flask
+      fetch('http://localhost:5000/enviar-email', {
         method: 'POST',
-        body: formData
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
       })
-      .then(response => {
-        if (!response.ok) throw new Error('Erro na comunicação');
-        return response.json();
-      })
+      .then(response => response.json())
       .then(data => {
         if (data.status === "success") {
-          window.location.href = 'Agradecimento.html'; // Redireciona para a página de agradecimento
+          alert('Confirmação enviada com sucesso!');
         } else {
           throw new Error(data.message);
         }
       })
       .catch(err => {
-        alert('Erro: ' + err.message); // Exibe erro, caso aconteça
+        alert('Erro: ' + err.message);
       });
     });
   </script>
