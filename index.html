@@ -120,6 +120,15 @@
         <input type="number" name="criancas-10" id="criancas-10" placeholder="Número de crianças (até 10 anos)" min="0" required />
       </div>
 
+      <div class="form-group">
+        <label for="confirmacao">Confirmação de presença</label>
+        <select name="presenca" id="confirmacao" required>
+          <option value="" disabled selected>Selecione...</option>
+          <option value="PRESENTE">PRESENTE</option>
+          <option value="AUSENTE">AUSENTE</option>
+        </select>
+      </div>
+
       <button type="submit">Confirmar presença</button>
     </form>
   </section>
@@ -134,7 +143,26 @@
       e.preventDefault();
 
       // Coleta os dados do formulário
-      const formData = new FormData(this);
+      const nome = document.getElementById('nome').value.trim();
+      const telefone = document.getElementById('telefone').value.trim();
+      const presenca = document.getElementById('confirmacao').value;
+      const acompanhantesAdultos = document.getElementById('acompanhantes-adultos').value || 0;
+      const criancas6 = document.getElementById('criancas-6').value || 0;
+      const criancas10 = document.getElementById('criancas-10').value || 0;
+
+      // Verifica se os campos obrigatórios estão preenchidos
+      if (!nome || !telefone || !presenca) {
+        alert('Erro: Dados incompletos. Certifique-se de enviar nome, telefone e presença.');
+        return;
+      }
+
+      // Cria o objeto de dados para envio
+      const formData = new FormData();
+      formData.append('Nome', nome);
+      formData.append('Telefone', telefone);
+      formData.append('Presença', presenca);
+      formData.append('Acp - Adulto', acompanhantesAdultos);
+      formData.append('Acp - Criança', parseInt(criancas6) + parseInt(criancas10));
 
       // Envia os dados para o Google Apps Script
       fetch('https://script.google.com/macros/s/AKfycbw2d3q9Gr4pz58174BalA0t3SemJo1uES-ALdwetf0RBKDVIIW4rWcrH9MK4S1qnpLnDw/exec', {
