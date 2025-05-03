@@ -1,146 +1,161 @@
 <!DOCTYPE html>
- <html lang="pt-BR">
- <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>Gabriel & Isabella</title>
-   <style>
-     body {
-       font-family: 'Segoe UI', sans-serif;
-       background: #fff8f2;
-       color: #333;
-       margin: 0;
-       padding: 0;
-     }
-     header {
-       background: #e4c1f9;
-       text-align: center;
-       padding: 2.5rem 1rem;
-     }
-     header h1 {
-       margin: 0;
-       font-size: 3rem;
-     }
-     header p {
-       font-size: 1.2rem;
-     }
-     section {
-       padding: 2rem;
-       max-width: 600px;
-       margin: 2rem auto;
-       background: #fff;
-       border-radius: 12px;
-       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-     }
-     section h2 {
-       margin-bottom: 1.5rem;
-       font-size: 1.8rem;
-       color: #5e239d;
-       text-align: center;
-     }
-     .countdown {
-       font-size: 1.5rem;
-       font-weight: bold;
-       margin-top: 1rem;
-     }
-     form {
-       display: flex;
-       flex-direction: column;
-     }
-     .form-group {
-       margin-bottom: 1rem;
-     }
-     form label {
-       display: block;
-       margin-bottom: 0.5rem;
-       font-weight: bold;
-     }
-     form input,
-     form button,
-     form select {
-       width: 100%;
-       padding: 0.8rem;
-       font-size: 1rem;
-       border-radius: 8px;
-       border: 1px solid #ccc;
-       box-sizing: border-box;
-     }
-     form button {
-       background-color: #e4c1f9;
-       color: #333;
-       font-weight: bold;
-       border: none;
-       cursor: pointer;
-       transition: background-color 0.3s;
-       margin-top: 1rem;
-     }
-     form button:hover {
-       background-color: #d3a7eb;
-     }
-     footer {
-       text-align: center;
-       font-size: 0.9rem;
-       margin: 3rem auto 1rem;
-       color: #999;
-     }
-   </style>
- </head>
- <body>
-   <header>
-     <h1>Gabriel & Isabella</h1>
-     <p>28 de Junho de 2025, às 19h | Buffet Aerokids</p>
-     <div class="countdown" id="countdown"></div>
-   </header>
- 
-   <section>
-     <h2>Confirme sua Presença</h2>
-     <form id="rsvp-form">
-       <div class="form-group">
-         <label for="nome">Nome</label>
-         <input type="text" name="nome" id="nome" placeholder="Seu nome" required />
-       </div>
- 
-       <div class="form-group">
-         <label for="telefone">Número de telefone</label>
-         <input type="tel" name="telefone" id="telefone" placeholder="Seu número de telefone" required />
-       </div>
- 
-       <div class="form-group">
-         <label for="acompanhantes-adultos">Acompanhantes - Adultos (Sem incluir você)</label>
-         <input type="number" name="acompanhantes-adultos" id="acompanhantes-adultos" placeholder="Número de acompanhantes adultos" min="0" required />
-       </div>
- 
-       <div class="form-group">
-         <label for="acompanhantes-criancas">Acompanhantes - Crianças (Até 10 anos de idade)</label>
-         <input type="number" name="acompanhantes-criancas" id="acompanhantes-criancas" placeholder="Número de crianças (até 6 anos)" min="0" required />
-         <input type="number" name="acompanhantes-criancas" id="acompanhantes-criancas" placeholder="Número de crianças (até 10 anos)" min="0" required />
-       </div>
- 
-       <div class="form-group">
- @@ -154,25 +154,25 @@
-       const formData = new FormData(this);
- 
-       // Enviar os dados para o Google Apps Script
-       fetch('https://script.google.com/macros/s/AKfycbw2d3q9Gr4pz58174BalA0t3SemJo1uES-ALdwetf0RBKDVIIW4rWcrH9MK4S1qnpLnDw/exec', {
-       fetch('https://script.google.com/macros/s/AKfycbyBg8Bgd0aEG-NWyFttZLuU0c1GbOhe5gj6_JbVYAwKRAR9Zs4oitGKxjKmPMihvmKgsQ/exec', {
-         method: 'POST',
-         body: formData
-       })
-       .then(response => {
-         if (!response.ok) throw new Error('Erro na comunicação');
-         return response.json();
-       })
-       .then(data => {
-         if (data.status === "success") {
-           window.location.href = 'Agradecimento.html'; // Redireciona para a página de agradecimento
-         } else {
-           throw new Error(data.message);
-         }
-       })
-       .catch(err => {
-         alert('Erro: ' + err.message); // Exibe erro, caso aconteça
-       });
-     });
-   </script>
- </body>
- </html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabriel & Isabella</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8f2;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #e4c1f9;
+      text-align: center;
+      padding: 2.5rem 1rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+    }
+    header p {
+      font-size: 1.2rem;
+    }
+    section {
+      padding: 2rem;
+      max-width: 600px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    section h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      color: #5e239d;
+      text-align: center;
+    }
+    .countdown {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    form input,
+    form button,
+    form select {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    form button {
+      background-color: #e4c1f9;
+      color: #333;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 1rem;
+    }
+    form button:hover {
+      background-color: #d3a7eb;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      margin: 3rem auto 1rem;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gabriel & Isabella</h1>
+    <p>28 de Junho de 2025, às 19h | Buffet Aerokids</p>
+    <div class="countdown" id="countdown"></div>
+  </header>
+
+  <section>
+    <h2>Confirme sua Presença</h2>
+    <form id="rsvp-form">
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome" placeholder="Seu nome" required />
+      </div>
+
+      <div class="form-group">
+        <label for="telefone">Número de telefone</label>
+        <input type="tel" name="telefone" id="telefone" placeholder="Seu número de telefone" required />
+      </div>
+
+      <div class="form-group">
+        <label for="acompanhantes-adultos">Acompanhantes - Adultos (Sem incluir você)</label>
+        <input type="number" name="acompanhantes-adultos" id="acompanhantes-adultos" placeholder="Número de acompanhantes adultos" min="0" required />
+      </div>
+
+      <div class="form-group">
+        <label for="criancas-6">Acompanhantes - Crianças (Até 6 anos de idade)</label>
+        <input type="number" name="criancas-6" id="criancas-6" placeholder="Número de crianças (até 6 anos)" min="0" required />
+      </div>
+
+      <div class="form-group">
+        <label for="criancas-10">Acompanhantes - Crianças (De 7 até 10 anos de idade)</label>
+        <input type="number" name="criancas-10" id="criancas-10" placeholder="Número de crianças (até 10 anos)" min="0" required />
+      </div>
+
+      <button type="submit">Confirmar presença</button>
+    </form>
+  </section>
+
+  <footer>
+    Feito com amor por Gabriel & Isabella - 2025
+  </footer>
+
+  <script>
+    // Envio do formulário corrigido
+    document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Coleta os dados do formulário
+      const formData = new FormData(this);
+
+      // Envia os dados para o Google Apps Script
+      fetch('https://script.google.com/macros/s/AKfycbw2d3q9Gr4pz58174BalA0t3SemJo1uES-ALdwetf0RBKDVIIW4rWcrH9MK4S1qnpLnDw/exec', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Erro na comunicação');
+        return response.json();
+      })
+      .then(data => {
+        if (data.status === "success") {
+          window.location.href = 'Agradecimento.html'; // Redireciona para a página de agradecimento
+        } else {
+          throw new Error(data.message);
+        }
+      })
+      .catch(err => {
+        alert('Erro: ' + err.message); // Exibe erro, caso aconteça
+      });
+    });
+  </script>
+</body>
+</html>
