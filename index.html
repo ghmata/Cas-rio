@@ -108,8 +108,8 @@
       <div class="form-group">
         <label for="presenca">Confirmação de presença</label>
         <select name="Presença" id="presenca" required>
-          <option value="Sim">Sim</option>
-          <option value="Não">Não</option>
+          <option value="Irei comparecer">Irei comparecer</option>
+          <option value="Não poderei comparecer">Não poderei comparecer</option>
         </select>
       </div>
 
@@ -143,7 +143,7 @@
       const formData = new FormData(this);
 
       // Enviar os dados para o Google Apps Script
-      fetch('https://script.google.com/macros/s/SEU_SCRIPT_ID/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbxPyIoms6jCXUAITKphP1aBZww7Uo7s-3m5rmQqPby8a9YH4FSh2zTp4xvP13lOBINd8g/exec', {
         method: 'POST',
         body: formData
       })
